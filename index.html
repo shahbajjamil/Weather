@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="styles.css">
 <script src="fetch.js"></script>
 <h1>Weather Lite</h1>
-
+<img id="loading" src="loading.svg" width="20%" alt="Loading">
 <form class="my-form">
     
         <div class="inputarea">
@@ -35,6 +35,7 @@
         city= encodeURIComponent(city);
         var key = "780ef95ebb219b60e6efe4eb1c7b04a6";
         var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+key;
+        loading(true);
         fetch(url)
             .then(function(response) {
                 return response.json();
@@ -55,7 +56,9 @@
             })
             .catch(function() {
                 alert("Weather not available");
+                loading(false);
             })
+            loading(true);
         fetch(url)
             .then(function(response) {
                 return response.json();
@@ -89,9 +92,19 @@
 
 
                 // alert("some");
+                loading(false);
             })
             .catch(function() {
                 alert("Other details not available");
+                loading(false);
             })
     });
+    function loading(on) {
+    var loading = document.querySelector("#loading");
+    if (on) {
+        loading.style.display = "block";
+    } else {
+        loading.style.display = "none";
+    }
+}
 </script>

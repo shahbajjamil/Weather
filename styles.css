@@ -49,6 +49,13 @@ h2 {
     background-color: orange;
     color:#000;
 }
+#loading {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    display: none;
+}
 #temperature {
     text-align: center;
     font-size: 5em;
