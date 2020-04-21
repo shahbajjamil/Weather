@@ -19,9 +19,9 @@
         <p id="feels"></p>
         <p id="min"></p>
         <p id="max"></p>
+        <p id="speed"></p>
         <p id="pressure"></p>
         <p id="humid"></p>
-        <p id="speed"></p>
 
 
     </section>
@@ -80,9 +80,9 @@
                 var mi= document.querySelector("#min");
                 var ma= document.querySelector("#max");
 
-                p.innerHTML="Pressure "+pres;
+                p.innerHTML="Pressure "+pres+"hPa";
                 a.innerHTML="Humidity "+humid;
-                s.innerHTML="speed "+speed+"km/hr";
+                s.innerHTML="Wind speed "+speed+"km/hr";
                 f.innerHTML="Real feal "+feelsC.toFixed(0) +"C /"+ feelsF.toFixed(0) +"F";
                 mi.innerHTML="Min temp "+minC.toFixed(0) +"C /"+ minF.toFixed(0) +"F";
                 ma.innerHTML="Max temp "+maxC.toFixed(0) +"C /"+ maxF.toFixed(0) +"F";

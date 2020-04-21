@@ -59,7 +59,10 @@ h2 {
 .hot {
     color: red;
 }
-.output p{
-    display: flex;
-    background-color: aqua;
+p {
+    padding:5px 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    word-spacing: 5px;
 }
