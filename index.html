@@ -5,15 +5,28 @@
 <script src="fetch.js"></script>
 <h1>Weather Lite</h1>
 
-<form>
-    <label for="cityname">City Name</label>
-    <input id="cityname" required>
-    <input id="btnGetWeather" type="button" value="Get Weather">
-
+<form class="my-form">
+    
+        <div class="inputarea">
+            <label for="cityname">City Name</label>
+            <input id="cityname" type="text" placeholder="Enter the city" required>
+            <input class="button" id="btnGetWeather" type="button" value="Get Weather">
+        </div>
+    </form>
     <section id="output">
-        <p id="temperature"></p>
+       
+        <p id="temperature"> <h2>Today</h2></p>
+        <p id="feels"></p>
+        <p id="min"></p>
+        <p id="max"></p>
+        <p id="pressure"></p>
+        <p id="humid"></p>
+        <p id="speed"></p>
+
+
     </section>
-</form>
+   
+
 
 <script>
     var btnGetWeather =document.querySelector("#btnGetWeather");
@@ -42,6 +55,43 @@
             })
             .catch(function() {
                 alert("Weather not available");
+            })
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(weatherData) {
+                var pres = weatherData.main.pressure;
+                var humid = weatherData.main.humidity;
+                var feels = weatherData.main.feels_like;
+                var feelsC =feels-273.15;
+                var feelsF =feels* 9/5 - 459.67;
+                var min = weatherData.main.temp_min;
+                var minC =min-273.15;
+                var minF =min* 9/5 - 459.67;
+                var max = weatherData.main.temp_max;
+                var maxC =max-273.15;
+                var maxF =max* 9/5 - 459.67;
+                var speed = weatherData.wind.speed;
+                var p= document.querySelector("#pressure");
+                var a= document.querySelector("#humid");
+                var s= document.querySelector("#speed");
+                var f= document.querySelector("#feels");
+                var mi= document.querySelector("#min");
+                var ma= document.querySelector("#max");
+
+                p.innerHTML="Pressure "+pres;
+                a.innerHTML="Humidity "+humid;
+                s.innerHTML="speed "+speed+"km/hr";
+                f.innerHTML="Real feal "+feelsC.toFixed(0) +"C /"+ feelsF.toFixed(0) +"F";
+                mi.innerHTML="Min temp "+minC.toFixed(0) +"C /"+ minF.toFixed(0) +"F";
+                ma.innerHTML="Max temp "+maxC.toFixed(0) +"C /"+ maxF.toFixed(0) +"F";
+
+
+                // alert("some");
+            })
+            .catch(function() {
+                alert("Other details not available");
             })
     });
 </script>
