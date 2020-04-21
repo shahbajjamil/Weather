@@ -75,3 +75,9 @@ p {
     text-align: center;
     word-spacing: 5px;
 }
+
+@media (max-width:600px) {
+    #temperature {
+        font-size: 3em;
+    }
+}
